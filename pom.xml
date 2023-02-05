@@ -38,7 +38,7 @@
                 <version>3.0.0-M8</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src\main\java\org\example\Resource\runKiotViet.xml</suiteXmlFile>
+                        <suiteXmlFile>src\main\java\org\example\Resource\runTestCase.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

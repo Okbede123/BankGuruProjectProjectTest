@@ -18,17 +18,17 @@ public class ExtentManager {
     public static ExtentReports extent = ExtentManager.createExtentReports();
 
     public synchronized static ExtentReports createExtentReports() {
-        ExtentSparkReporter reporter = new ExtentSparkReporter(GlobalConstant.GETLINK_PROJECT + "/src/HtmlExtent/ExtentReport.html");
-        reporter.config().setReportName("KiotViet HTML Report");
-        reporter.config().setDocumentTitle("KiotViet HTML Report");
+        ExtentSparkReporter reporter = new ExtentSparkReporter(GlobalConstant.GETLINK_PROJECT + "/src/test/java/report/ExtentReport.html");
+        reporter.config().setReportName("Bank Guru HTML Report");
+        reporter.config().setDocumentTitle("Bank Guru HTML Report");
         reporter.config().setTimelineEnabled(true);
         reporter.config().setEncoding("utf-8");
         reporter.config().setTheme(Theme.DARK);
 
         extentReports.attachReporter(reporter);
         extentReports.setSystemInfo("Company", "Duc Auto Test");
-        extentReports.setSystemInfo("Project", "KiotViet");
-        extentReports.setSystemInfo("Team", "Kiot Online");
+        extentReports.setSystemInfo("Project", "Bank Guru");
+        extentReports.setSystemInfo("Team", "Bank Guru");
         extentReports.setSystemInfo("JDK version", GlobalConstant.JAVA_VERSION);
         return extentReports;
     }

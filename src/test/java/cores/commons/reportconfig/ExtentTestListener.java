@@ -16,7 +16,6 @@ public class ExtentTestListener  implements ITestListener {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
     }
 
-
     @Override
     public void onFinish(ITestContext iTestContext) {
         ExtentManager.extentReports.flush();

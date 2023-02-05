@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,31 +13,44 @@ import java.util.Random;
 import java.util.Set;
 
 public class BasePage {
+
+
     WebDriver driver;
 
-    public String castToParameter(String locator,String ...values){
-        return String.format(locator,values);
+    public BasePage(WebDriver driver){
+        this.driver = driver;
     }
 
-    public By getByLocator(String locator){
-        switch (locator){
+    public String castToParameter(String locator,String...values){
+        return String.format(locator,(Object[])values);
+    }
 
-            case "id=": case "Id=": case "ID=":{
-              return  By.id(locator.substring(3));
-            }
-            case "class=": case "Class=": case "CLASS=":{
-                return By.className(locator.substring(6));
-            }
-            case "xpath=": case "Xpath=": case "XPATH=":{
-                return By.xpath(locator.substring(6));
-            }
-            case "name=": case "Name=": case "NAME=":{
-                return By.name(locator.substring(5));
-            }
-            default:{
-                return null;
-            }
+
+    public By getByLocator(String locator) {
+
+        By locatorcut = null;
+
+        if(locator.startsWith("ID=") || locator.startsWith("Id=") || locator.startsWith("iD=") || locator.startsWith("id=")){
+            //return By.id(locator.substring(3));
+            locatorcut = By.id(locator.substring(3));
         }
+        else if(locator.startsWith("name=") || locator.startsWith("Name=") || locator.startsWith("NAME=")){
+            locatorcut = By.name(locator.substring(5));
+        }
+        else if(locator.startsWith("xpath=") || locator.startsWith("XPATH=") || locator.startsWith("Xpath=")){
+            locatorcut = By.xpath(locator.substring(6));
+        }
+        else if(locator.startsWith("CSS=") || locator.startsWith("Css=") || locator.startsWith("css=")){
+            locatorcut = By.cssSelector(locator.substring(4));
+        }
+        else if(locator.startsWith("class=") || locator.startsWith("CLASS=") || locator.startsWith("Class=")){
+            locatorcut = By.className(locator.substring(6));
+        }
+        else {
+            throw new RuntimeException("Locator is not valild");
+        }
+        return locatorcut;
+
     }
 
     public WebElement searchToElement(String locator, String...values){
@@ -46,30 +58,59 @@ public class BasePage {
     }
 
     public void clickToElements(String locator,String...values){
+        waitElementClick(locator,values);
         searchToElement(locator,values).click();
     }
 
     public void sendKeysToElement(String locator,String valueToSend,String...values){
+        waitElementVisibility(locator,values);
+        searchToElement(locator,values).clear();
         searchToElement(locator,values).sendKeys(valueToSend);
+
     }
 
-    public void WaitElementVisibility(String locator,String...values){
+    public String getText(String locator,String...values){
+        return searchToElement(locator,values).getText();
+    }
+
+    public String getNameUrl(){
+       return driver.getCurrentUrl();
+    }
+
+    public void refeshPage(){
+        driver.navigate().refresh();
+    }
+
+    public void goToURl(String url){
+        driver.get(url);
+    }
+
+    public void sendKey(String locator,String value){
+        waitElementVisibility(locator);
+        searchToElement(locator).clear();
+        searchToElement(locator).sendKeys(value);
+    }
+
+    public void waitElementVisibility(String locator, String...values){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(castToParameter(locator,values))));
     }
 
-    public void WaitElementClick(String locator,String...values){
+    public void waitElementClick(String locator,String...values){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(getByLocator(castToParameter(locator,values))));
     }
 
-    public void WaitElementInvisible(String locator,String...values){
+
+    public void waitElementInvisible(String locator, String...values){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(castToParameter(locator,values))));
     }
 
-    public void isElementDisplayed(String locator,String... values){
-        searchToElement(locator,values).isDisplayed();
+    public boolean isElementDisplayed(String locator,String... values){
+        waitElementClick(locator,values);
+      return searchToElement(locator,values).isDisplayed();
     }
 
     public void isSelectedElement(String locator,String... values){
+        waitElementClick(locator,values);
         searchToElement(locator,values).isSelected();
     }
 
@@ -94,9 +135,17 @@ public class BasePage {
     }
 
     public void clickByJs(String locator,String...values){
+        waitElementClick(locator,values);
         ((JavascriptExecutor)driver).executeScript("arguments[0].click();",searchToElement(locator,values));
     }
 
+    public String getAttribute(String locator,String nameAttribute,String...values){
+      return searchToElement(locator,values).getAttribute(nameAttribute);
+    }
+
+    public void removeAttribute(String locator,String attribute,String...values){
+        ((JavascriptExecutor)driver).executeScript("arguments[0].removeAttribute('" +attribute+ "')",searchToElement(locator,values));
+    }
 
     public WebDriver switchToId(String id){
         return driver.switchTo().window(id);
