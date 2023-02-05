@@ -45,7 +45,7 @@ public class BasePage {
       return  driver.findElement(getByLocator(castToParameter(locator,values)));
     }
 
-    public void clickToElement(String locator,String...values){
+    public void clickToElements(String locator,String...values){
         searchToElement(locator,values).click();
     }
 
