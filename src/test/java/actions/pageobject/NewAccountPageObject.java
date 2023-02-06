@@ -15,6 +15,13 @@ public class NewAccountPageObject extends MenuSubNavigation {
         sendKeysToElement(BaseUIBankGuru.INPUT_INFORMATION_WITH_TD,idCustomer,"Customer id");
         selectItem(NewAccountPageUI.SELECT_ACCOUNT_TYPE,accountType);
         sendKeysToElement(NewAccountPageUI.INITIAL_DEPOSIT,valueInitialDeposit);
+        clickToElements(BaseUIBankGuru.BUTTON_TYPE,"submit");
+    }
+    public String getTextTitleEditSuccessfully(){
+       return getText(NewAccountPageUI.TITLE_ADD_NEW_ACCOUNT_SUCCESSFULLY);
+    }
+    public String getTextCurrentAmount(){
+        return getText(NewAccountPageUI.GETTEXT_CURRENT_AMOUNT);
     }
 
 }

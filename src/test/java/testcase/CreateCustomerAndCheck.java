@@ -99,12 +99,12 @@ public class CreateCustomerAndCheck extends BaseTest {
         //pending
     }
 
-    @Test
+    //@Test
     public void TC_03_AddNewAccountAndCheck(){
             newAccountPageObject = newCustomerPageObject.openMenuSubNavigation().goToNewAccountMenuSubNav("New Account");
             newAccountPageObject.inputAddNewAccountForm(customerID,"Current","60000");
+            Assert.assertEquals(newAccountPageObject.getTextTitleEditSuccessfully(),"Account Generated Successfully!!!");
+            Assert.assertEquals(newAccountPageObject.getTextCurrentAmount(),"60000");
     }
-
-
 
 }

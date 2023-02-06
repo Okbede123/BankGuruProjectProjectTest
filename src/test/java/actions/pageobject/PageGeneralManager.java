@@ -26,4 +26,8 @@ public class PageGeneralManager {
     public static NewAccountPageObject openNewAccountPage(WebDriver driver){
         return new NewAccountPageObject(driver);
     }
+
+    public static EditAccountPageObject openEditAccountPage(WebDriver driver){
+        return new EditAccountPageObject(driver);
+    }
 }
