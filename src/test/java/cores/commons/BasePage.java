@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -53,6 +54,18 @@ public class BasePage {
 
     }
 
+    public WebDriver.Navigation driverNavigate(){
+      return  driver.navigate();
+    }
+
+    public void backPageandForward(){
+        driverNavigate().back();
+        driverNavigate().forward();
+    }
+    public void forwardPage(){
+        driverNavigate().forward();
+    }
+
     public WebElement searchToElement(String locator, String...values){
       return  driver.findElement(getByLocator(castToParameter(locator,values)));
     }
@@ -67,6 +80,14 @@ public class BasePage {
         searchToElement(locator,values).clear();
         searchToElement(locator,values).sendKeys(valueToSend);
 
+    }
+
+
+
+    public void selectItem(String locator,String valueText,String...values){
+        Select select;
+      select = new Select(searchToElement(castToParameter(locator,values)));
+      select.selectByVisibleText(valueText);
     }
 
     public String getText(String locator,String...values){

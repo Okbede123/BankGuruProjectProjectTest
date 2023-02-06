@@ -1,31 +1,27 @@
 package testcase;
 
-import actions.pageobject.LoginPageObject;
-import actions.pageobject.ManagerHomePage;
-import actions.pageobject.NewCustomerPageObject;
-import actions.pageobject.PageGeneralManager;
+import actions.pageobject.*;
 import com.aventstack.extentreports.Status;
 import cores.commons.BaseTest;
+import cores.commons.GlobalConstant;
 import cores.commons.reportconfig.ExtentManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import java.lang.reflect.Method;
 
 public class CreateCustomerAndCheck extends BaseTest {
 
-    SoftAssert softAssert = new SoftAssert();
     WebDriver driver;
 
     LoginPageObject loginPageObject;
     ManagerHomePage managerHomePage;
     NewCustomerPageObject newCustomerPageObject;
-    String userName = "mngr476454";
-    String password = "YjepAtE";
+    EditCustomerPageObject editCustomerPageObject;
+    NewAccountPageObject newAccountPageObject;
     String inputFieldCustomerName = "AUTOMATION TESTING";
     String inputFieldDateOfBirth = "01/01/1989";
     String inputAddressField = "PO Box 911 8331 Duis Avenue";
@@ -33,8 +29,9 @@ public class CreateCustomerAndCheck extends BaseTest {
     String inputFieldState = "FL";
     String inputFieldPin = "466250";
     String inputFieldMobileNumber = "4555442476";
-    String inputFieldEmail = "automation@gmail.com" + getRandomNum();
+    String inputFieldEmail = getRandomNum() + "automation@gmail.com";
     String inputFieldPassword = "1";
+    String customerID;
 
     @Parameters({"browser"})
     @BeforeClass
@@ -42,52 +39,72 @@ public class CreateCustomerAndCheck extends BaseTest {
         driver = openBrowser(browser,"https://demo.guru99.com/v4/");
         loginPageObject = PageGeneralManager.openLoginPage(driver);
     }
-
     @Test
     public void TC_01_CreateCustomerAndCheckSuccessfully(Method method){
         ExtentManager.startTest(method.getName(),"TC_01_CreateCustomerAndCheckSuccessfully");
         ExtentManager.getTest().log(Status.INFO,"input username,password and login");
-       managerHomePage = loginPageObject.inputUserNamePassAndLogin(userName,password,"LOGIN");
+       managerHomePage = loginPageObject.inputUserNamePassAndLogin(GlobalConstant.USER_NAME,GlobalConstant.PASSWORD,"LOGIN");
         ExtentManager.getTest().log(Status.INFO,"click to create customer");
-       newCustomerPageObject = managerHomePage.goToCreateNewCustomerFromMenuSubNav("New Customer");
+       newCustomerPageObject = managerHomePage.openMenuSubNavigation().goToCreateCustomerMenuSubNav("New Customer");
         ExtentManager.getTest().log(Status.INFO,"input field customer name");
-       newCustomerPageObject.inputInformationCustomer(inputFieldCustomerName,"Customer Name");
+       newCustomerPageObject.inputInformationAddressCustomer(inputFieldCustomerName,"Customer Name");
         ExtentManager.getTest().log(Status.INFO,"input field day of birth");
-       newCustomerPageObject.inputInformationCustomer(inputFieldDateOfBirth,"Date of Birth");
+       newCustomerPageObject.inputInformationAddressCustomer(inputFieldDateOfBirth,"Date of Birth");
         ExtentManager.getTest().log(Status.INFO,"input field address");
-       newCustomerPageObject.inputInformationCustomer(inputAddressField);
+       newCustomerPageObject.inputInformationAddressCustomer(inputAddressField);
         ExtentManager.getTest().log(Status.INFO,"input field city field");
-       newCustomerPageObject.inputInformationCustomer(inputFieldCity,"City");
+       newCustomerPageObject.inputInformationAddressCustomer(inputFieldCity,"City");
         ExtentManager.getTest().log(Status.INFO,"input field state field");
-       newCustomerPageObject.inputInformationCustomer(inputFieldState,"State");
+       newCustomerPageObject.inputInformationAddressCustomer(inputFieldState,"State");
         ExtentManager.getTest().log(Status.INFO,"input field pin field");
-       newCustomerPageObject.inputInformationCustomer(inputFieldPin,"PIN");
+       newCustomerPageObject.inputInformationAddressCustomer(inputFieldPin,"PIN");
         ExtentManager.getTest().log(Status.INFO,"input field mobile field");
-       newCustomerPageObject.inputInformationCustomer(inputFieldMobileNumber,"Mobile Number");
+       newCustomerPageObject.inputInformationAddressCustomer(inputFieldMobileNumber,"Mobile Number");
         ExtentManager.getTest().log(Status.INFO,"input field email field");
-       newCustomerPageObject.inputInformationCustomer(inputFieldEmail,"E-mail");
+       newCustomerPageObject.inputInformationAddressCustomer(inputFieldEmail,"E-mail");
         ExtentManager.getTest().log(Status.INFO,"input field password field");
-       newCustomerPageObject.inputInformationCustomer(inputFieldPassword,"Password");
+       newCustomerPageObject.inputInformationAddressCustomer(inputFieldPassword,"Password");
        newCustomerPageObject.clickToButtonCreateCustomer("submit");
         ExtentManager.getTest().log(Status.INFO,"verify title customer");
         Assert.assertEquals(newCustomerPageObject.getTextVerifyCustomerTitle(),"Customer Registered Successfully!!!");
         ExtentManager.getTest().log(Status.INFO,"verify text name customer");
-        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Customer Name",inputFieldCustomerName),"AUTOMATION TESTING");
+        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Customer Name"),"AUTOMATION TESTING");
         ExtentManager.getTest().log(Status.INFO,"verify text sex");
-        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Gender","male"),"male");
+        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Gender"),"male");
         ExtentManager.getTest().log(Status.INFO,"verify text date of birth");
-        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Birthdate","1989-01-01"),"1989-01-01");
+        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Birthdate"),"1989-01-01");
         ExtentManager.getTest().log(Status.INFO,"verify text address");
-        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Address",inputAddressField),"PO Box 911 8331 Duis Avenue");
+        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Address"),"PO Box 911 8331 Duis Avenue");
         ExtentManager.getTest().log(Status.INFO,"verify text city");
-        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("City",inputFieldCity),"Tampa");
+        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("City"),"Tampa");
         ExtentManager.getTest().log(Status.INFO,"verify text state");
-        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("State",inputFieldState),"FL");
+        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("State"),"FL");
         ExtentManager.getTest().log(Status.INFO,"verify text pin");
-        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Pin",inputFieldPin),"466250");
+        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Pin"),"466250");
         ExtentManager.getTest().log(Status.INFO,"verify text mobile");
-        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Mobile No.",inputFieldMobileNumber),"4555442476");
+        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Mobile No."),"4555442476");
         ExtentManager.getTest().log(Status.INFO,"verify text email");
-        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Email",inputFieldEmail),inputFieldEmail);
+        Assert.assertEquals(newCustomerPageObject.getTextVerifyField("Email"),inputFieldEmail);
+        customerID = newCustomerPageObject.getTextVerifyField("Customer ID");
     }
+
+    //@Test
+    public void TC_02_Edit_CustomerAndCheck(){
+        editCustomerPageObject = newCustomerPageObject.openMenuSubNavigation().goToEditCustomerMenuSubNav("Edit Customer");
+        editCustomerPageObject.inputCustomerIdandSubmit(customerID);
+        editCustomerPageObject.inputInformationAddressCustomerPageEdit("1883 Cursus Avenue");
+        editCustomerPageObject.inputInformationEditCustomer("Houston","City");
+        editCustomerPageObject.inputInformationEditCustomer("0912911231","Mobile Number");
+        editCustomerPageObject.inputInformationEditCustomer("Texas","State");
+        //pending
+    }
+
+    @Test
+    public void TC_03_AddNewAccountAndCheck(){
+            newAccountPageObject = newCustomerPageObject.openMenuSubNavigation().goToNewAccountMenuSubNav("New Account");
+            newAccountPageObject.inputAddNewAccountForm(customerID,"Current","60000");
+    }
+
+
+
 }

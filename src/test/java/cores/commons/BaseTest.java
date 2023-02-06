@@ -17,7 +17,6 @@ public class BaseTest {
 
     public WebDriver openBrowser(String browser,String nameUrl){
         //System.setProperty("webdriver.chrome.driver",GlobalConstant.LINK_PROJECT+"chromedriver.exe");
-        //System.out.println(GlobalConstant.LINK_PROJECT+"chromedriver.exe");
         switch (browser){
             case "chrome":{
                 driver = new ChromeDriver();

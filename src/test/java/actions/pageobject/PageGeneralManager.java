@@ -18,4 +18,12 @@ public class PageGeneralManager {
     public static NewCustomerPageObject openNewCustomerPage(WebDriver driver){
         return new NewCustomerPageObject(driver);
     }
+
+    public static EditCustomerPageObject openEditCustomerPage(WebDriver driver){
+        return new EditCustomerPageObject(driver);
+    }
+
+    public static NewAccountPageObject openNewAccountPage(WebDriver driver){
+        return new NewAccountPageObject(driver);
+    }
 }
