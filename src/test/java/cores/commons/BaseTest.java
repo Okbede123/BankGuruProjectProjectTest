@@ -44,4 +44,13 @@ public class BaseTest {
         Random rand = new Random();
         return rand.nextInt(10000);
     }
+
+    protected void sleep_in_Time(int time){
+        try {
+            Thread.sleep(time*1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

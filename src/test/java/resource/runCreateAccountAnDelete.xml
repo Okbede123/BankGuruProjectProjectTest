@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel = "false" name = "TestCase">
+
+    <listeners>
+        <listener class-name = "cores.commons.reportconfig.ExtentTestListener"/>
+    </listeners>
+
+    <test name = "Run On Chrome">
+        <parameter name = "browser" value = "chrome"/>
+        <classes>
+            <class name = "testcase.CreateCustomerAndCheck" />
+            <class name = "testcase.DeleteAccount" />
+        </classes>
+    </test>
+</suite>

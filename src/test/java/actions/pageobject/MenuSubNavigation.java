@@ -20,14 +20,16 @@ public class MenuSubNavigation extends BasePage {
     public NewCustomerPageObject goToCreateCustomerMenuSubNav(String createCustomer){
         getUrl = getNameUrl();
         clickToElements(MenuSubNavigationUI.MENUSUBNAVIGATION,createCustomer);
-        handlePopupAds("https://demo.guru99.com/v4/manager/addcustomerpage.php");
+        handlePopupAds(getUrl);
+        clickToElements(MenuSubNavigationUI.MENUSUBNAVIGATION,createCustomer);
         return PageGeneralManager.openNewCustomerPage(driver);
     }
 
     public EditCustomerPageObject goToEditCustomerMenuSubNav(String editCustomer){
         getUrl = getNameUrl();
         clickToElements(MenuSubNavigationUI.MENUSUBNAVIGATION,editCustomer);
-        handlePopupAds("https://demo.guru99.com/v4/manager/EditCustomer.php");
+        handlePopupAds(getUrl);
+        clickToElements(MenuSubNavigationUI.MENUSUBNAVIGATION,editCustomer);
         return PageGeneralManager.openEditCustomerPage(driver);
     }
 
@@ -35,6 +37,7 @@ public class MenuSubNavigation extends BasePage {
         getUrl = getNameUrl();
         clickToElements(MenuSubNavigationUI.MENUSUBNAVIGATION,newAccount);
         handlePopupAds(getUrl);
+        clickToElements(MenuSubNavigationUI.MENUSUBNAVIGATION,newAccount);
         return PageGeneralManager.openNewAccountPage(driver);
     }
 
@@ -42,7 +45,16 @@ public class MenuSubNavigation extends BasePage {
         getUrl = getNameUrl();
         clickToElements(MenuSubNavigationUI.MENUSUBNAVIGATION,editAccount);
         handlePopupAds(getUrl);
+        clickToElements(MenuSubNavigationUI.MENUSUBNAVIGATION,editAccount);
         return PageGeneralManager.openEditAccountPage(driver);
+    }
+
+    public DeleteAccountPageObject goToDeleteAccountMenuSubNav(String deleteAccount){
+        getUrl = getNameUrl();
+        clickToElements(MenuSubNavigationUI.MENUSUBNAVIGATION,deleteAccount);
+        handlePopupAds(getUrl);
+        clickToElements(MenuSubNavigationUI.MENUSUBNAVIGATION,deleteAccount);
+        return PageGeneralManager.openDeleteAccountPage(driver);
     }
 
     public void handlePopupAds(String url){

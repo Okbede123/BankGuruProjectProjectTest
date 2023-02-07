@@ -30,4 +30,8 @@ public class PageGeneralManager {
     public static EditAccountPageObject openEditAccountPage(WebDriver driver){
         return new EditAccountPageObject(driver);
     }
+
+    public static DeleteAccountPageObject openDeleteAccountPage(WebDriver driver){
+        return new DeleteAccountPageObject(driver);
+    }
 }
