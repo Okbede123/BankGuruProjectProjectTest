@@ -47,4 +47,9 @@ public class ExtentTestListener  implements ITestListener {
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
         getTest().log(Status.FAIL, "Test Failed with percentage" + getTestMethodName(iTestResult));
     }
+
+    @Override
+    public void onStart(ITestContext iTestContext) {
+
+    }
 }

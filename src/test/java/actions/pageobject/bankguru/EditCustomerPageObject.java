@@ -1,7 +1,7 @@
-package actions.pageobject;
+package actions.pageobject.bankguru;
 
-import interfaceUI.BaseUIBankGuru;
-import interfaceUI.NewCustomerPageUI;
+import interfaceUI.bankguru.BaseUIBankGuru;
+import interfaceUI.bankguru.NewCustomerPageUI;
 import org.openqa.selenium.WebDriver;
 
 public class EditCustomerPageObject extends MenuSubNavigation {

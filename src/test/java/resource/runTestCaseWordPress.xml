@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel = "false" name = "TestCase">
 
+    <parameter name = "userUrl" value="http://localhost:8081/"/>
+    <parameter name = "adminUrl" value="http://localhost:8081/wp-admin"/>
+
     <listeners>
         <listener class-name = "cores.commons.reportconfig.ExtentTestListener"/>
     </listeners>
@@ -8,7 +11,7 @@
     <test name = "Run On Chrome">
         <parameter name = "browser" value = "chrome"/>
         <classes>
-            <class name = "testcase.bankguru.CreateCustomerAndCheck" />
+            <class name = "testcase.wordpress.admin.Admin_01_Post" />
         </classes>
     </test>
 </suite>

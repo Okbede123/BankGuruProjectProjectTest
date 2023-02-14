@@ -1,4 +1,4 @@
-package interfaceUI;
+package interfaceUI.bankguru;
 
 public class NewCustomerPageUI {
 

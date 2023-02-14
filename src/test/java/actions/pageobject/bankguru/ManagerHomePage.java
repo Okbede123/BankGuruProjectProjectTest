@@ -1,7 +1,6 @@
-package actions.pageobject;
+package actions.pageobject.bankguru;
 
-import cores.commons.BasePage;
-import interfaceUI.ManagerHomePageUI;
+import interfaceUI.bankguru.ManagerHomePageUI;
 import org.openqa.selenium.WebDriver;
 
 public class ManagerHomePage extends MenuSubNavigation {

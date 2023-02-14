@@ -1,7 +1,7 @@
-package actions.pageobject;
+package actions.pageobject.bankguru;
 
 import cores.commons.BasePage;
-import interfaceUI.MenuSubNavigationUI;
+import interfaceUI.bankguru.MenuSubNavigationUI;
 import org.openqa.selenium.WebDriver;
 
 public class MenuSubNavigation extends BasePage {

@@ -5,10 +5,12 @@
         <listener class-name = "cores.commons.reportconfig.ExtentTestListener"/>
     </listeners>
 
+    <parameter name = "url" value ="http://staging-orangehrmlive.com/" />
+
     <test name = "Run On Chrome">
         <parameter name = "browser" value = "chrome"/>
         <classes>
-            <class name = "testcase.bankguru.CreateCustomerAndCheck" />
+            <class name = "testcase.bankguru.CheckEnvironment" />
         </classes>
     </test>
 </suite>

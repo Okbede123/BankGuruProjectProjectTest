@@ -1,9 +1,10 @@
 package cores.commons;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import actions.pageobject.wordpress.AdminLoginPageObject;
+import actions.pageobject.wordpress.PageGeneralManager;
+import actions.pageobject.wordpress.UserHomePageObject;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -62,6 +63,10 @@ public class BasePage {
         driverNavigate().back();
         driverNavigate().forward();
     }
+
+    public void backPage(){
+        driverNavigate().back();
+    }
     public void forwardPage(){
         driverNavigate().forward();
     }
@@ -75,14 +80,17 @@ public class BasePage {
         searchToElement(locator,values).click();
     }
 
-    public void sendKeysToElement(String locator,String valueToSend,String...values){
+    public void sendKeysToElement(String locator,CharSequence valueToSend,String...values){
         waitElementVisibility(locator,values);
         searchToElement(locator,values).clear();
         searchToElement(locator,values).sendKeys(valueToSend);
-
     }
 
 
+    public void moveToElement(String locator,String...values){
+        waitElementVisibility(locator,values);
+        new Actions(driver).moveToElement(searchToElement(locator,values)).perform();
+    }
 
     public void selectItem(String locator,String valueText,String...values){
         Select select;
@@ -113,16 +121,27 @@ public class BasePage {
     }
 
     public void waitElementVisibility(String locator, String...values){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(castToParameter(locator,values))));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(castToParameter(locator,values))));
+    }
+
+    public Set<Cookie> setCookie(){
+        return driver.manage().getCookies();
+    }
+
+    public void addCookie(Set<Cookie> cookies){
+        for (Cookie c: cookies) {
+            driver.manage().addCookie(c);
+        }
+        refeshPage();
     }
 
     public void waitElementClick(String locator,String...values){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(getByLocator(castToParameter(locator,values))));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(getByLocator(castToParameter(locator,values))));
     }
 
 
     public void waitElementInvisible(String locator, String...values){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(castToParameter(locator,values))));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(castToParameter(locator,values))));
     }
 
     public boolean isElementDisplayed(String locator,String... values){
@@ -130,9 +149,25 @@ public class BasePage {
       return searchToElement(locator,values).isDisplayed();
     }
 
-    public void isSelectedElement(String locator,String... values){
+    public boolean ElementNotDisplay(String locator,String...values){
+        if(getListElement(locator,values).size() == 0){
+            System.out.println("element not in dom");
+            return true;
+        } else if (getListElement(locator,values).size() > 0 && !getListElement(locator,values).get(0).isDisplayed()) {
+            System.out.println("element in dom and not display");
+            return true;
+        } else if (getListElement(locator,values).size() > 0) {
+            System.out.println("element in dom and display");
+            return false;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean isSelectedElement(String locator,String... values){
         waitElementClick(locator,values);
-        searchToElement(locator,values).isSelected();
+       return searchToElement(locator,values).isSelected();
     }
 
     public List<WebElement> getListElement(String locator,String... values){
@@ -201,6 +236,17 @@ public class BasePage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public UserHomePageObject openUserHomePage(String url){
+        goToURl(url);
+        return PageGeneralManager.openUserHome(driver);
+    }
+
+
+    public AdminLoginPageObject openAdminLoginPage(String url){
+        goToURl(url);
+        return PageGeneralManager.openAdminLogin(driver);
     }
 
     public int randomNum(int num){

@@ -1,6 +1,6 @@
-package testcase;
+package testcase.bankguru;
 
-import actions.pageobject.*;
+import actions.pageobject.bankguru.*;
 import com.aventstack.extentreports.Status;
 import cores.commons.BaseTest;
 import cores.commons.GlobalConstant;

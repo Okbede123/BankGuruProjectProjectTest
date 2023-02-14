@@ -1,9 +1,9 @@
-package testcase;
+package testcase.bankguru;
 
-import actions.pageobject.EditAccountPageObject;
-import actions.pageobject.LoginPageObject;
-import actions.pageobject.ManagerHomePage;
-import actions.pageobject.PageGeneralManager;
+import actions.pageobject.bankguru.EditAccountPageObject;
+import actions.pageobject.bankguru.LoginPageObject;
+import actions.pageobject.bankguru.ManagerHomePage;
+import actions.pageobject.bankguru.PageGeneralManager;
 import cores.commons.BaseTest;
 import cores.commons.GlobalConstant;
 import org.openqa.selenium.WebDriver;

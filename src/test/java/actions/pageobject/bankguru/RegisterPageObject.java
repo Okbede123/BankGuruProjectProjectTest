@@ -1,4 +1,4 @@
-package actions.pageobject;
+package actions.pageobject.bankguru;
 
 import cores.commons.BasePage;
 import org.openqa.selenium.WebDriver;

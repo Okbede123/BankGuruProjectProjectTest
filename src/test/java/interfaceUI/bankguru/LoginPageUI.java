@@ -1,4 +1,4 @@
-package interfaceUI;
+package interfaceUI.bankguru;
 
 public class LoginPageUI {
     public static final String INPUT_INFORMATION = "xpath=//td[text() = '%s']//parent::tr/td/input";
