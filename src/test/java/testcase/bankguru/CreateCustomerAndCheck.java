@@ -22,6 +22,7 @@ public class CreateCustomerAndCheck extends BaseTest {
     NewCustomerPageObject newCustomerPageObject;
     EditCustomerPageObject editCustomerPageObject;
     NewAccountPageObject newAccountPageObject;
+    DeleteAccountPageObject deleteAccountPageObject;
     String inputFieldCustomerName = "AUTOMATION TESTING";
     String inputFieldDateOfBirth = "01/01/1989";
     String inputAddressField = "PO Box 911 8331 Duis Avenue";
@@ -32,6 +33,7 @@ public class CreateCustomerAndCheck extends BaseTest {
     String inputFieldEmail = getRandomNum() + "automation@gmail.com";
     String inputFieldPassword = "1";
     String customerID;
+    static String accountID;
 
     @Parameters({"browser"})
     @BeforeClass
@@ -99,12 +101,14 @@ public class CreateCustomerAndCheck extends BaseTest {
         //pending
     }
 
-    //@Test
+    @Test
     public void TC_03_AddNewAccountAndCheck(){
             newAccountPageObject = newCustomerPageObject.openMenuSubNavigation().goToNewAccountMenuSubNav("New Account");
             newAccountPageObject.inputAddNewAccountForm(customerID,"Current","60000");
             Assert.assertEquals(newAccountPageObject.getTextTitleEditSuccessfully(),"Account Generated Successfully!!!");
-            Assert.assertEquals(newAccountPageObject.getTextCurrentAmount(),"60000");
+            Assert.assertEquals(newAccountPageObject.getTextAccountSuccessfully("Current Amount"),"60000");
+            accountID = newAccountPageObject.getTextAccountSuccessfully("Account ID");
     }
+
 
 }

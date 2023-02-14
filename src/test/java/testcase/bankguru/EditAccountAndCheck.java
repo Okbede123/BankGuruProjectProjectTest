@@ -9,6 +9,7 @@ import cores.commons.GlobalConstant;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 public class EditAccountAndCheck extends BaseTest {
     WebDriver driver;
@@ -23,6 +24,10 @@ public class EditAccountAndCheck extends BaseTest {
         loginPageObject = PageGeneralManager.openLoginPage(driver);
        managerHomePage = loginPageObject.inputUserNamePassAndLogin(GlobalConstant.USER_NAME,GlobalConstant.PASSWORD,"LOGIN");
        editAccountPageObject = managerHomePage.openMenuSubNavigation().goToEditAccountMenuSubNav("Edit Account");
+    }
 
+    @Test
+    public void TC_01_EditAccountAndCheck(){
+        editAccountPageObject.inputAccountNoAndSubmitAndAcceptAlert("");
     }
 }

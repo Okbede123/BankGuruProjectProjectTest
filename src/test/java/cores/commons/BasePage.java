@@ -139,6 +139,18 @@ public class BasePage {
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(getByLocator(castToParameter(locator,values))));
     }
 
+    public void waitAlertPresentAndAccept(){
+        new WebDriverWait(driver,Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent()).accept();
+    }
+
+    public void waitAlertPresentAndDismiss(){
+        new WebDriverWait(driver,Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent()).dismiss();
+    }
+
+    public String waitAlertPresentAndGetText(){
+       return new WebDriverWait(driver,Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent()).getText();
+    }
+
 
     public void waitElementInvisible(String locator, String...values){
         new WebDriverWait(driver, 5).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(castToParameter(locator,values))));

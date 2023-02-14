@@ -20,8 +20,8 @@ public class NewAccountPageObject extends MenuSubNavigation {
     public String getTextTitleEditSuccessfully(){
        return getText(NewAccountPageUI.TITLE_ADD_NEW_ACCOUNT_SUCCESSFULLY);
     }
-    public String getTextCurrentAmount(){
-        return getText(NewAccountPageUI.GETTEXT_CURRENT_AMOUNT);
+    public String getTextAccountSuccessfully(String valueField){
+        return getText(NewAccountPageUI.GETTEXT_CREATE_SUCCSESSFULLY,valueField);
     }
-
 }
+
