@@ -1,5 +1,6 @@
 package testcase.bankguru;
 
+import actions.pageobject.DeleteAccountPageObject;
 import actions.pageobject.bankguru.*;
 import com.aventstack.extentreports.Status;
 import cores.commons.BaseTest;
@@ -22,6 +23,7 @@ public class CreateCustomerAndCheck extends BaseTest {
     NewCustomerPageObject newCustomerPageObject;
     EditCustomerPageObject editCustomerPageObject;
     NewAccountPageObject newAccountPageObject;
+
     DeleteAccountPageObject deleteAccountPageObject;
     String inputFieldCustomerName = "AUTOMATION TESTING";
     String inputFieldDateOfBirth = "01/01/1989";
@@ -33,7 +35,7 @@ public class CreateCustomerAndCheck extends BaseTest {
     String inputFieldEmail = getRandomNum() + "automation@gmail.com";
     String inputFieldPassword = "1";
     String customerID;
-    static String accountID;
+    public static String accountID;
 
     @Parameters({"browser"})
     @BeforeClass

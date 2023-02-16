@@ -8,7 +8,7 @@
     <test name = "Run On Chrome">
         <parameter name = "browser" value = "chrome"/>
         <classes>
-            <class name = "testcase.CreateCustomerAndCheck" />
+            <class name = "testcase.bankguru.CreateCustomerAndCheck" />
             <class name = "testcase.DeleteAccount" />
         </classes>
     </test>

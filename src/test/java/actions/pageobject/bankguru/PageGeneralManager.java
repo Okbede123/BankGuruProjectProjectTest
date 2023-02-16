@@ -1,5 +1,6 @@
 package actions.pageobject.bankguru;
 
+import actions.pageobject.DeleteAccountPageObject;
 import org.openqa.selenium.WebDriver;
 
 public class PageGeneralManager {

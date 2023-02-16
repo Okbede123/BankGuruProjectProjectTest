@@ -140,15 +140,15 @@ public class BasePage {
     }
 
     public void waitAlertPresentAndAccept(){
-        new WebDriverWait(driver,Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent()).accept();
+        new WebDriverWait(driver,5).until(ExpectedConditions.alertIsPresent()).accept();
     }
 
     public void waitAlertPresentAndDismiss(){
-        new WebDriverWait(driver,Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent()).dismiss();
+        new WebDriverWait(driver,5).until(ExpectedConditions.alertIsPresent()).dismiss();
     }
 
     public String waitAlertPresentAndGetText(){
-       return new WebDriverWait(driver,Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent()).getText();
+       return new WebDriverWait(driver,5).until(ExpectedConditions.alertIsPresent()).getText();
     }
 
 
