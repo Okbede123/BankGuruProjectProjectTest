@@ -1,5 +1,6 @@
 package actions.pageobject.bankguru;
 
+import actions.pageobject.DeleteAccountPageObject;
 import cores.commons.BasePage;
 import interfaceUI.bankguru.MenuSubNavigationUI;
 import org.openqa.selenium.WebDriver;

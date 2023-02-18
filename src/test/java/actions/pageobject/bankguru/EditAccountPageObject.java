@@ -1,6 +1,7 @@
 package actions.pageobject.bankguru;
 
-import interfaceUI.BaseUIBankGuru;
+
+import interfaceUI.bankguru.BaseUIBankGuru;
 import org.openqa.selenium.WebDriver;
 
 public class EditAccountPageObject extends MenuSubNavigation {

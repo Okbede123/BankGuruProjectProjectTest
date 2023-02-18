@@ -1,6 +1,7 @@
 package testcase;
 
 import actions.pageobject.*;
+import actions.pageobject.bankguru.*;
 import cores.commons.BasePage;
 import cores.commons.BaseTest;
 import cores.commons.GlobalConstant;
@@ -13,6 +14,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import testcase.bankguru.CreateCustomerAndCheck;
 
 import java.time.Duration;
 

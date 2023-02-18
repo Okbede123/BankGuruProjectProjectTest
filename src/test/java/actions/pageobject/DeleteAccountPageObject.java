@@ -1,6 +1,8 @@
 package actions.pageobject;
 
-import interfaceUI.BaseUIBankGuru;
+import actions.pageobject.bankguru.MenuSubNavigation;
+
+import interfaceUI.bankguru.BaseUIBankGuru;
 import org.openqa.selenium.WebDriver;
 
 public class DeleteAccountPageObject extends MenuSubNavigation {
