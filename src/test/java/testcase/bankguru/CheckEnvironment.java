@@ -34,6 +34,7 @@ public class CheckEnvironment extends BaseTest {
     public void TC_02_Edit_CustomerAndCheck(Method method){
         ExtentManager.startTest(method.getName(),"TC_02_Edit_CustomerAndCheck");
         ExtentManager.getTest().log(Status.INFO,"check tc2");
+
     }
 
 
