@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel = "tests" name = "TestCase" thread-count = "2">
+
+    <listeners>
+        <listener class-name = "cores.commons.reportconfig.ExtentTestListener"/>
+    </listeners>
+
+    <parameter name = "url" value="https://demo.guru99.com/v4/"/>
+    <parameter name = "environment" value ="local" />
+
+    <test name = "Run On Chrome">
+        <parameter name = "browser" value = "chrome"/>
+        <classes>
+            <class name = "testcase.bankguru.Demo_Thread" />
+        </classes>
+    </test>
+
+    <test name = "Run On Firefox">
+        <parameter name = "browser" value = "firefox"/>
+        <classes>
+            <class name = "testcase.bankguru.Demo_Thread" />
+        </classes>
+    </test>
+</suite>

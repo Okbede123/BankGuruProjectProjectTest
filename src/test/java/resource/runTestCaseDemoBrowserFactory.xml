@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel = "false" name = "TestCase">
+
+    <listeners>
+        <listener class-name = "cores.commons.reportconfig.ExtentTestListener"/>
+    </listeners>
+
+    <parameter name = "url" value="https://demo.guru99.com/v4/"/>
+
+    <test name = "Run On Chrome">
+<!--        <parameter name = "browser" value = ""/>-->
+        <classes>
+            <class name = "testcase.bankguru.CreateCustomerAndCheckDemoBrowerFactory" />
+        </classes>
+    </test>
+</suite>

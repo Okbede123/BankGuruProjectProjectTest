@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel = "false" name = "Bankguru" >
+
+<!--    <listeners>-->
+<!--        <listener class-name = "cores.commons.reportconfig.ExtentTestListener"/>-->
+<!--    </listeners>-->
+
+    <parameter name = "url" value ="https://demo.guru99.com/v4/" />
+    <parameter name = "environment" value ="grid" />
+
+    <test name="Run on Chrome">
+        <parameter name="browser" value="firefox" />
+        <parameter name="osName" value="Windows" />
+        <parameter name="osVersion" value="" />
+        <parameter name="port" value="5555" />
+        <parameter name="ipAddress" value="192.168.1.8" />
+        <classes>
+            <class name="testcase.grid.Demo_Grid_Refactor_Docker" />
+        </classes>
+    </test>
+
+<!--    <test name="Run on Firefox">-->
+<!--        <parameter name="browser" value="firefox" />-->
+<!--        <parameter name="osName" value="Windows" />-->
+<!--        <parameter name="osVersion" value="" />-->
+<!--        <parameter name="port" value="4444" />-->
+<!--        <parameter name="ipAddress" value="localhost" />-->
+<!--        <classes>-->
+<!--            <class name="testcase.grid.Demo_Grid_Refactor_Docker" />-->
+<!--        </classes>-->
+<!--    </test>-->
+
+</suite>
