@@ -19,6 +19,7 @@ public class CheckEnvironment extends BaseTest {
 
 
 
+
     @Parameters({"browser","url"})
     @BeforeClass
     public void beforeClass(String browser,String url){
