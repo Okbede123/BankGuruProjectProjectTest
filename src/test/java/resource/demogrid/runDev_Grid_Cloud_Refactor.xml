@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel = "false" name = "Bankguru" thread-count = "1">
 
-<!--    <listeners>-->
-<!--        <listener class-name = "cores.commons.reportconfig.ExtentTestListener"/>-->
-<!--    </listeners>-->
+    <listeners>
+        <listener class-name = "cores.commons.reportconfig.ExtentTestListener"/>
+    </listeners>
 
     <parameter name = "url" value ="https://demo.guru99.com/v4/" />
     <parameter name = "environment" value ="local" />
