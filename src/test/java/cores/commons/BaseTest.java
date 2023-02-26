@@ -25,11 +25,14 @@ import java.net.URL;
 import java.util.Random;
 
 public class BaseTest {
+
+   protected final Log log;
     WebDriver driver;
+
+
 
     protected static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<WebDriver>();
 
-     protected Log log;
 
      protected BaseTest(){
          log = LogFactory.getLog(getClass());

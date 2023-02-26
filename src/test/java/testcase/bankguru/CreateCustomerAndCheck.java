@@ -45,6 +45,7 @@ public class CreateCustomerAndCheck extends BaseTest {
     }
     @Test
     public void TC_01_CreateCustomerAndCheckSuccessfully(Method method){
+        log.info("test");
         ExtentManager.startTest(method.getName(),"TC_01_CreateCustomerAndCheckSuccessfully");
         ExtentManager.getTest().log(Status.INFO,"input username,password and login");
        managerHomePage = loginPageObject.inputUserNamePassAndLogin(GlobalConstant.USER_NAME,GlobalConstant.PASSWORD,"LOGIN");
@@ -105,6 +106,7 @@ public class CreateCustomerAndCheck extends BaseTest {
 
     @Test
     public void TC_03_AddNewAccountAndCheck(){
+        log.info("tes2");
             newAccountPageObject = newCustomerPageObject.openMenuSubNavigation().goToNewAccountMenuSubNav("New Account");
             newAccountPageObject.inputAddNewAccountForm(customerID,"Current","60000");
             Assert.assertEquals(newAccountPageObject.getTextTitleEditSuccessfully(),"Account Generated Successfully!!!");

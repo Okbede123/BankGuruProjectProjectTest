@@ -21,7 +21,7 @@ import java.time.Duration;
 public class DeleteAccount extends BaseTest {
      WebDriver driver;
      LoginPageObject loginPageObject;
-
+     
     ManagerHomePage managerHomePage;
     NewCustomerPageObject newCustomerPageObject;
     EditCustomerPageObject editCustomerPageObject;

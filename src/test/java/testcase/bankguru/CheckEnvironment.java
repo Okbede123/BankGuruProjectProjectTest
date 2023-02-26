@@ -18,6 +18,9 @@ public class CheckEnvironment extends BaseTest {
     WebDriver driver;
 
 
+
+
+    
     @Parameters({"browser","url"})
     @BeforeClass
     public void beforeClass(String browser,String url){
