@@ -18,7 +18,7 @@ public class ExtentManager {
     public static ExtentReports extent = ExtentManager.createExtentReports();
 
     public synchronized static ExtentReports createExtentReports() {
-        ExtentSparkReporter reporter = new ExtentSparkReporter(GlobalConstant.GETLINK_PROJECT + "/target/report/ExtentReport.html");
+        ExtentSparkReporter reporter = new ExtentSparkReporter(GlobalConstant.GETLINK_PROJECT + "/target/reportExtent/ExtentReport.html");
         reporter.config().setReportName("Bank Guru HTML Report");
         reporter.config().setDocumentTitle("Bank Guru HTML Report");
         reporter.config().setTimelineEnabled(true);
