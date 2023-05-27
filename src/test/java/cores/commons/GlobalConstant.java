@@ -10,8 +10,8 @@ public class GlobalConstant {
     public static final String LINK_PROJECT = GETLINK_PROJECT + "\\src\\test\\java\\filefolder\\";
     public static final String UPLOAD_PICTURES = "xpath=//input[@type = 'file']";
     public static final String JAVA_VERSION = System.getProperty("java.version");
-    public static final String USER_NAME = "mngr476454";
-    public static final String PASSWORD = "YjepAtE";
+    public static final String USER_NAME = "mngr486117";
+    public static final String PASSWORD = "gEgArez";
 
     public static final String BROWSER_NAME = "cv_zdscw7";
     public static final String BROWSER_AUTOMATE_KEY = "PJf6JMnc9RVPW4wNw6Kg";

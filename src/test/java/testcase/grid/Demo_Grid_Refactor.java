@@ -109,7 +109,7 @@ public class Demo_Grid_Refactor extends BaseTest {
     public void TC_03_AddNewAccountAndCheck(){
         newAccountPageObject = newCustomerPageObject.openMenuSubNavigation().goToNewAccountMenuSubNav("New Account");
         newAccountPageObject.inputAddNewAccountForm(customerID,"Current","60000");
-        Assert.assertEquals(newAccountPageObject.getTextTitleEditSuccessfully(),"Account Generated Successfully hihi!!!");
+        Assert.assertEquals(newAccountPageObject.getTextTitleEditSuccessfully(),"Account Generated Successfully!!!");
         Assert.assertEquals(newAccountPageObject.getTextAccountSuccessfully("Current Amount"),"60000");
         accountID = newAccountPageObject.getTextAccountSuccessfully("Account ID");
     }

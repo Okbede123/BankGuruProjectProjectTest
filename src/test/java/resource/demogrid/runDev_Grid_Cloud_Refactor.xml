@@ -13,7 +13,7 @@
         <parameter name="osName" value="Windows" />
         <parameter name="osVersion" value="10" />
         <parameter name="port" value="5555" />
-        <parameter name="ipAddress" value="192.168.1.8" />
+        <parameter name="ipAddress" value="192.168.1.6" />
         <classes>
             <class name="testcase.grid.Demo_Grid_Refactor" />
         </classes>
