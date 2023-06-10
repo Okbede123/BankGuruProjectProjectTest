@@ -105,8 +105,10 @@ public class CreateCustomerAndCheck extends BaseTest {
     }
 
     @Test
-    public void TC_03_AddNewAccountAndCheck(){
+    public void TC_03_AddNewAccountAndCheck(Method method){
         log.info("tes2");
+        ExtentManager.startTest(method.getName(),"TC_03_AddNewAccountAndCheck");
+        ExtentManager.getTest().log(Status.INFO,"add new customer");
             newAccountPageObject = newCustomerPageObject.openMenuSubNavigation().goToNewAccountMenuSubNav("New Account");
             newAccountPageObject.inputAddNewAccountForm(customerID,"Current","60000");
             Assert.assertEquals(newAccountPageObject.getTextTitleEditSuccessfully(),"Account Generated Successfully!!!");

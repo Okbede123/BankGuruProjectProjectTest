@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite parallel = "false" name = "TestCase">
+<suite parallel = "false" name = "TestCase" thread-count = "2">
 
     <listeners>
         <listener class-name = "cores.commons.reportconfig.ExtentTestListener"/>
     </listeners>
 
     <test name = "Run On Chrome">
+        <parameter name = "browser" value = "chrome"/>
+        <classes>
+            <class name = "testcase.bankguru.CreateCustomerAndCheck" />
+        </classes>
+    </test>
+
+    <test name = "Run On Chrome2">
         <parameter name = "browser" value = "chrome"/>
         <classes>
             <class name = "testcase.bankguru.CreateCustomerAndCheck" />

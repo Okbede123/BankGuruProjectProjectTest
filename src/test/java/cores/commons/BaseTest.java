@@ -6,6 +6,7 @@ import actions.pageobject.factorybrowser.FirefoxDriverManager;
 import cores.commons.factory_environment.BrowserStackFactory;
 import cores.commons.factory_environment.GridFactory;
 import cores.commons.factory_environment.LocalFactory;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.Platform;
@@ -117,17 +118,20 @@ public class BaseTest {
 
 
     public WebDriver openBrowser(String browser,String nameUrl){
-        System.setProperty("webdriver.chrome.driver",GlobalConstant.LINK_PROJECT+"chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver",GlobalConstant.LINK_PROJECT+"chromedriver.exe");
         switch (browser){
             case "chrome":{
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
             }
             case "firefox":{
+                WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
             }
             case "edge":{
+                WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
                 break;
             }
